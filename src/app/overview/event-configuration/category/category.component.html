@@ -1,0 +1,138 @@
+<form [formGroup]="categoryForm" (ngSubmit)="onSubmit()">
+  <div class="card">
+    <div class="card-body p-4 mx-2 my-1">
+      <div class="d-flex justify-content-between pb-1 mb-1">
+        <h2>
+          {{ 'Visibility in navigation Levels' | translate }}
+        </h2>
+        <i class="tes-event-configuration-tab-category-form__img" [inlineSVG]="'/assets/images/info.svg'"
+           [forceEvalStyles]="true" (click)="detailCancelModal.show()"></i>
+      </div>
+      <div class="row">
+        <div class="col-md-8 col-sm-8 text-center my-4">
+          <i [inlineSVG]="'/assets/images/stub.svg'" class="pb-3" [forceEvalStyles]="true"></i>
+          <div>
+            <div class="tes-event-configuration-tab-category__title">{{ 'Here you will find your ...' | translate }}</div>
+            <div class="tes-event-configuration-tab-category__title">{{ 'Here you can...' | translate }}</div>
+            <div class="tes-event-configuration-tab-category__description">
+              xxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+            </div>
+            <div class="tes-event-configuration-tab-category__description">
+              xxxxxxxxxxxxxxxxxxxxx
+            </div>
+          </div>
+        </div>
+  
+        <div class="col-lg-4 col-md-12 col-sm-12">
+          <div class="row" formArrayName="items">
+            <div class="col-md-12 col-sm-12 col-12">
+              <div class="form-group pt-4" *ngFor="let category of categoryForm.get('items')['controls']; let i=index">
+                <div [formGroupName]="i">
+                  <div class="py-2 d-flex">
+                    <i class="mr-3 cursor-pointer" [inlineSVG]="'assets/images/category/' + category.value.category + '.svg'"
+                       [forceEvalStyles]="true" (click)="detailCancelModal.show()"></i>
+                    <span class="tes-event-configuration-tab-category-status__title">
+                      {{ i === 0 ? 'Error' : i === 1 ? 'Warning' : 'Info' | translate}}
+                    </span>
+                  </div>
+
+                  <tes-dropdown [control]="category.controls['view']"
+                                [optionsList]="selectOptions"
+                                (valueChanged)="onCategoryChanged(category, $event)">
+                  </tes-dropdown>
+
+                  <div class="py-2 d-flex">
+                    <span class="pr-2 align-items-center tes-event-configuration-tab-category-checkbox__label">
+                      {{ 'Email notification' | translate }}
+                    </span>
+                    <label class="switch pt-3">
+                      <input type="checkbox" formControlName="emailNotification">
+                      <span class="slider round"></span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="pt-4 text-right">
+    <button type="submit" [disabled]="!hasChanged" class="py-2 px-5 btn btn-primary shadow-none">{{ 'Save' | translate }}</button>
+  </div>
+</form>
+
+
+<div bsModal #detailCancelModal="bs-modal" class="tes-specification-modal modal fade p-3" tabindex="-1"
+     role="dialog" aria-labelledby="detail-specification-modal">
+  <div class="modal-dialog">
+    <div class="tes-specification-modal-content py-2 px-4">
+
+      <i class="tes-specification-model__header-img" [inlineSVG]="'/assets/images/info-blue.svg'"
+         [forceEvalStyles]="true"></i>
+
+      <button type="button" class="tes-specification-model__header-btn"
+              aria-label="Close" (click)="detailCancelModal.hide()">
+      </button>
+
+      <div class="tes-specification-modal__body py-4 px-3 mb-2">
+
+        <div class="tes-specification-modal-body__title pb-1">
+          <span>{{ 'Visibility in navigation levels' | translate }}</span>
+          <i [inlineSVG]="'/assets/images/eye-blue.svg'" [forceEvalStyles]="true"></i>
+        </div>
+
+        <div class="tes-specification-modal-body py-4">
+
+          <div class="tes-specification-modal-body__block d-flex flex-row pb-3">
+            <span class="tes-specification-modal-body-block__title">{{ 'ACTIVE' | translate }}</span>
+            <span class="tes-specification-modal-body-block__description">{{ 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras blandit lacus nec malesuada congue. Donec suscipit pretium laoreet lobortis.' | translate }}</span>
+          </div>
+
+          <div class="tes-specification-modal-body__block d-flex flex-row py-3">
+            <span class="tes-specification-modal-body-block__title">{{ 'ACTIVE OR UNCONFIRMED' | translate }}</span>
+            <span class="tes-specification-modal-body-block__description">{{ 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras blandit lacus nec malesuada congue. Donec suscipit pretium laoreet lobortis.' | translate }}</span>
+          </div>
+
+          <div class="tes-specification-modal-body__block d-flex flex-row py-3">
+            <span class="tes-specification-modal-body-block__title">{{ 'ACTIVE OR UNCONFIRMED' | translate }}</span>
+            <span class="tes-specification-modal-body-block__description">{{ 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras blandit lacus nec malesuada congue. Donec suscipit pretium laoreet lobortis.' | translate }}</span>
+          </div>
+
+          <div class="tes-specification-modal-body__block d-flex flex-row py-3">
+            <span class="tes-specification-modal-body-block__title">{{ 'AT NO TIME' | translate }}</span>
+            <span class="tes-specification-modal-body-block__description">{{ 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras blandit lacus nec malesuada congue. Donec suscipit pretium laoreet lobortis.' | translate }}</span>
+          </div>
+
+        </div>
+
+        <div class="tes-specification-modal-body__title pb-1">
+          <span>{{ 'Email notification' | translate }}</span>
+          <i [inlineSVG]="'/assets/images/mail-blue.svg'" [forceEvalStyles]="true"></i>
+        </div>
+
+        <div class="tes-specification-modal-body py-4">
+
+          <div class="tes-specification-modal-body__block d-flex flex-row pb-3">
+            <span class="tes-specification-modal-body-block__title">{{ 'Yes' | translate }}</span>
+            <span class="tes-specification-modal-body-block__description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras blandit</span>
+          </div>
+
+          <div class="tes-specification-modal-body__block d-flex flex-row py-3">
+            <span class="tes-specification-modal-body-block__title">{{ 'No' | translate }}</span>
+            <span class="tes-specification-modal-body-block__description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed aliquam</span>
+          </div>
+
+        </div>
+
+        <div class="d-flex justify-content-end">
+          <button class="btn btn-secondary shadow-none px-5 py-2" (click)="detailCancelModal.hide()">Ok</button>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</div>

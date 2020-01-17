@@ -1,0 +1,202 @@
+<form [formGroup]="assetAddForm" (ngSubmit)="onSubmit()">
+
+  <div class="card">
+
+    <div class="card-body mx-3 mt-2 mb-3">
+
+      <div class="tes-add-asset__header">
+        {{ 'Operator Information' | translate }}
+      </div>
+
+      <div class="row pt-3 pb-4">
+        <div class="col-8 d-flex">
+          <div class="flex-even pr-5">
+            <div class="form-group">
+              <label class="mb-1">{{ 'Operator' | translate }}</label>
+              <input type="text" class="form-control tes-add-asset__text" formControlName="operator">
+              <div *ngIf="submitted && assetAddFormControls.operator.errors" class="alert alert-danger">
+                <div *ngIf="assetAddFormControls.operator.errors.required">{{ 'Operator' | translate }} is required
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex-even">
+            <div class="form-group">
+              <label class="mb-1">{{ 'Location' | translate }}</label>
+              <tes-location-list
+                [control]="assetAddForm.controls['location']"
+                [optionsList]="locations"
+                (valueChanged)="onLocationChanged($event)"
+              ></tes-location-list>
+              <span (click)="assetAddForm.value.location ? editLocation(assetAddForm.value.location) : ''" class="mt-2 tes-location__inscription">
+                <i class="mr-2" [inlineSVG]="'/assets/images/navigation.svg'" [forceEvalStyles]="true"></i>
+                {{ 'Edit location' | translate }}
+              </span>
+              <div *ngIf="submitted && !assetAddForm.value.location" class="alert alert-danger">
+                {{ 'Location' | translate }} is required
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tes-add-asset__header">
+        {{ 'Transformer Data' | translate }}
+      </div>
+
+      <div class="row pt-3">
+        <div class="col-12 d-flex">
+          <div class="flex-fill pr-5">
+            <div class="form-group">
+              <label class="mb-1">Name</label>
+              <input type="text" class="form-control tes-add-asset__text" formControlName="transformerName">
+              <div *ngIf="submitted && assetAddFormControls.transformerName.errors" class="alert alert-danger">
+                <div *ngIf="assetAddFormControls.transformerName.errors.required">Name is required</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex-fill pr-5">
+            <div class="form-group">
+              <label class="mb-1">{{ 'Number' | translate }}</label>
+              <input type="text" class="form-control tes-add-asset__text" formControlName="number">
+              <div *ngIf="submitted && assetAddFormControls.number.errors" class="alert alert-danger">
+                <div *ngIf="assetAddFormControls.number.errors.required">{{ 'Number' | translate }} is required</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex-fill">
+            <div class="form-group">
+              <label class="mb-1">{{ 'Manufacturer' | translate }}</label>
+              <input type="text" class="form-control tes-add-asset__text" formControlName="manufacturer">
+              <div *ngIf="submitted && assetAddFormControls.manufacturer.errors" class="alert alert-danger">
+                <div *ngIf="assetAddFormControls.manufacturer.errors.required">{{ 'Manufacturer' | translate }} is
+                  required
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row pt-3">
+        <div class="col-12 d-flex">
+          <div class="flex-fill pr-5">
+            <div class="form-group">
+              <label class="mb-1">{{ 'Serial number' | translate }}</label>
+              <input type="text" class="form-control tes-add-asset__text" formControlName="serialNumber">
+              <div *ngIf="submitted && assetAddFormControls.serialNumber.errors" class="alert alert-danger">
+                <div *ngIf="assetAddFormControls.serialNumber.errors.required">{{ 'Serial number' | translate }} is
+                  required
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex-fill pr-5">
+            <div class="form-group">
+              <label class="mb-1">{{ 'Year of Manufacture' | translate }}</label>
+              <input type="text" class="form-control tes-add-asset__text" formControlName="yearOfManufacture">
+              <div *ngIf="submitted && assetAddFormControls.yearOfManufacture.errors" class="alert alert-danger">
+                <div *ngIf="assetAddFormControls.yearOfManufacture.errors.required">{{ 'Year of Manufacture' | translate
+                  }} is required
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex-fill">
+            <div class="form-group">
+              <label class="mb-1">{{ 'Maximum power' | translate }}</label>
+              <input type="text" class="form-control tes-add-asset__text" formControlName="maximumPower">
+              <span class="tes-simple-value__dimension">MVA</span>
+              <div *ngIf="submitted && assetAddFormControls.maximumPower.errors" class="alert alert-danger">
+                <div *ngIf="assetAddFormControls.maximumPower.errors.required">{{ 'Maximum power' | translate }} is
+                  required
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row pt-3 pb-4">
+        <div class="col-8 d-flex">
+          <div class="flex-fill pr-5">
+            <div class="form-group">
+              <label class="mb-1">{{ 'Nominal Tension (HV)' | translate }}</label>
+              <input type="text" class="form-control tes-add-asset__text" formControlName="nominalTensionHv">
+              <span class="tes-simple-value__dimension">kV</span>
+              <div *ngIf="submitted && assetAddFormControls.nominalTensionHv.errors" class="alert alert-danger">
+                <div *ngIf="assetAddFormControls.nominalTensionHv.errors.required">{{ 'Nominal Tension (HV)' | translate
+                  }} is required
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex-fill">
+            <div class="form-group">
+              <label class="mb-1">{{ 'Nominal Tension (LV)' | translate }}</label>
+              <input type="text" class="form-control tes-add-asset__text" formControlName="nominalTensionLv">
+              <span class="tes-simple-value__dimension">kV</span>
+              <div *ngIf="submitted && assetAddFormControls.nominalTensionLv.errors" class="alert alert-danger">
+                <div *ngIf="assetAddFormControls.nominalTensionLv.errors.required">{{ 'Nominal Tension (LV)' | translate
+                  }} is required
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tes-add-asset__header">
+        {{ 'Tap-changer Data' | translate }}
+      </div>
+
+      <div class="row pt-3">
+        <div class="col-12 d-flex">
+          <div class="flex-fill pr-5">
+            <div class="form-group">
+              <label class="mb-1">{{ 'Type Designation' | translate }}</label>
+              <input type="text" class="form-control tes-add-asset__text" formControlName="typeDesignation">
+              <div *ngIf="submitted && assetAddFormControls.typeDesignation.errors" class="alert alert-danger">
+                <div *ngIf="assetAddFormControls.typeDesignation.errors.required">{{ 'Type Designation' | translate }} is required</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex-fill pr-5">
+            <div class="form-group">
+              <label class="mb-1">{{ 'Serial number' | translate }}</label>
+              <input type="text" class="form-control tes-add-asset__text" formControlName="tapChangerSerialNumber">
+              <div *ngIf="submitted && assetAddFormControls.tapChangerSerialNumber.errors" class="alert alert-danger">
+                <div *ngIf="assetAddFormControls.tapChangerSerialNumber.errors.required">{{ 'Serial number'| translate }} is required</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex-fill">
+            <div class="form-group">
+              <label class="mb-1">{{ 'Manufacturer' | translate }}</label>
+              <input type="text" class="form-control tes-add-asset__text" formControlName="tapChangerManufacture">
+              <div *ngIf="submitted && assetAddFormControls.tapChangerManufacture.errors" class="alert alert-danger">
+                <div *ngIf="assetAddFormControls.tapChangerManufacture.errors.required">{{ 'Manufacturer' | translate }} is required</div>
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+
+      <div class="pt-5 text-right">
+        <button type="submit" class="btn btn-primary shadow-none px-5 py-2" [disabled]="!hasChanged">{{ 'Save' | translate }}</button>
+      </div>
+
+    </div>
+  </div>
+
+</form>

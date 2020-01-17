@@ -1,0 +1,17 @@
+tr:hover .fa-pencil {
+  visibility: visible !important;
+}
+
+.tes-table-section {
+  .transformer-name {
+    min-width: 191px;
+  }
+
+  .location {
+    min-width: 126px;
+  }
+
+  .manufacturer, .manutacture-year, .maximum-power, .serial-number {
+    min-width: 190px;
+  }
+}

@@ -1,0 +1,58 @@
+$background: #F8F8FA; // standard background color
+
+// breakpoints
+$xs: 0;
+$sm: 576px;
+$md: 768px;
+$lg: 992px;
+$xl: 1300px;
+
+$grid-breakpoints: (
+        xs: $xs,
+        sm: $sm,
+        md: $md,
+        lg: $lg,
+        xl: $xl
+);
+
+$container-max-widths: (
+        sm: $sm,
+        md: $md,
+        lg: $lg,
+        xl: $xl
+);
+
+// colors
+$white: #FFFFFF;
+
+$gray0: #00000033;
+$gray1: #4b4b4b;
+$gray2: #7d7d7d;
+$gray3: #b4b4b4;
+$gray4: #d2d2d2;
+$gray5: #DDDEE1;
+$gray6:  #ccc;
+$gray7: #00000033;
+$gray8: #EEEEF0;
+
+$blue1: #004e93;
+$blue2: #006ab3;
+$blue3: #1E7BBC;
+$blue4: #63A8DB;
+$blue5: #f0f6fb;
+
+
+// fonts
+$font-family-sans-serif: sans-serif;
+$font-family-sans-bold: 'SansBold';
+$font-family-sans-regular: 'SansRegular';
+$font-family-sans-semibold: 'SansSemibold';
+
+// font-size
+$font-size-1: 12px;
+$font-size-2: 14px;
+$font-size-3: 15px;
+$font-size-4: 16px;
+$font-size-5: 18px;
+$font-size-6: 22px;
+$font-size-7: 24px;

@@ -1,0 +1,31 @@
+
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background-color: $gray8;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: $gray3;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: $gray2;
+}
+// Styling of scrollbar in firefox & ie11
+.scrollbar-firefox {
+  scrollbar-width: thin;
+  scrollbar-color: $gray3 $gray8;
+}
+.scrollbar-ie {
+  scrollbar-track-color: $gray8;
+  scrollbar-shadow-color: $gray5;
+  scrollbar-arrow-color: $gray3;
+  scrollbar-face-color: $gray6;
+}

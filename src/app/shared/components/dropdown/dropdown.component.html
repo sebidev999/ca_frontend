@@ -1,0 +1,16 @@
+<div class="dropdown tes-dropdown" dropdown>
+
+  <button #dropdown class="form-control dropdown-toggle px-3"  type="button" dropdownToggle id="dropdownMenuButton">
+    <input type="text" [formControl]="control" (click)="dropdown.focus()" [placeholder]="'Please select' | translate">
+  </button>
+  <ul class="dropdown-menu" *dropdownMenu aria-labelledby="dropdownMenuButton">
+    <li class="dropdown-item disabled" *ngIf="isNeedSelectOption">
+      {{ 'Please select' | translate }}
+    </li>
+    <li class="dropdown-item" *ngFor="let option of optionsList"
+        (click)="onOptionSelected(option.id)">
+      {{ option.name | translate }}
+    </li>
+
+  </ul>
+</div>

@@ -1,0 +1,23 @@
+.icon {
+  background-repeat: no-repeat;
+  background-position: center;
+  vertical-align: middle;
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+
+
+  &.arrow {
+    background-image: url('assets/images/arrow.svg');
+    width: 14px;
+  }
+
+  &.cancel-blue {
+    background-image: url('assets/images/cancel-blue.svg');
+  }
+
+  &.cancel-icon {
+    background-image: url('assets/images/cancel-icon.svg');
+  }
+
+}

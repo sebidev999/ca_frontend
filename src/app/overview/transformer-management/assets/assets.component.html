@@ -1,0 +1,53 @@
+<h1 class="pt-4 pb-4">{{ 'Transformer Management' | translate }}</h1>
+
+<div class="tes-table pb-3">
+  <div class="tes-search-container" *ngIf="isShowFilter">
+    <input type="text" placeholder="Search..." focus="true" [(ngModel)]="searchKey" (ngModelChange)="searchByKeyword($event)" #filter>
+    <button [inlineSVG]="'/assets/images/cross-blue.svg'" [forceEvalStyles]="true" class="icon cross-blue" (click)="searchByKeyword('')"></button>
+  </div>
+
+  <div class="table-responsive tes-table-section">
+    <table class="table table-borderless">
+      <thead>
+        <tr>
+          <th class="text-center w-5" (click)="showHideFilter()"><i [inlineSVG]="'/assets/images/sort.svg'"></i></th>
+          <th class="text-left w-15 transformer-name" (click)="sortTableByFieldName(assetTableFields.TRANSFORMER_NAME)">{{ 'Transformer Name' | translate }} <i [inlineSVG]="isIncrease.transformerName ? '/assets/images/arrow-bottom.svg' : '/assets/images/arrow-top.svg'"></i></th>
+          <th class="text-left w-10 location" (click)="sortTableByFieldName(assetTableFields.LOCATION)">{{ 'Location' | translate }} <i [inlineSVG]="isIncrease.location ? '/assets/images/arrow-bottom.svg' : '/assets/images/arrow-top.svg'"></i></th>
+          <th class="text-left w-15 manufacturer" (click)="sortTableByFieldName(assetTableFields.MANUFACTURER)">{{ 'Manufacturer' | translate }} <i [inlineSVG]="isIncrease.manufacturer ? '/assets/images/arrow-bottom.svg' : '/assets/images/arrow-top.svg'"></i></th>
+          <th class="text-left w-15 manutacture-year" (click)="sortTableByFieldName(assetTableFields.YEAR_OF_MANUFACTURE)">{{ 'Year of Manufacture' | translate }} <i [inlineSVG]="isIncrease.yearOfManufacture ? '/assets/images/arrow-bottom.svg' : '/assets/images/arrow-top.svg'"></i></th>
+          <th class="text-left w-15 maximum-power" (click)="sortTableByFieldName(assetTableFields.MAXIMUM_POWER)">{{ 'Maximum power' | translate }} <i [inlineSVG]="isIncrease.maximumPower ? '/assets/images/arrow-bottom.svg' : '/assets/images/arrow-top.svg'"></i></th>
+          <th class="text-left w-15 serial-number" (click)="sortTableByFieldName(assetTableFields.SERIAL_NUMBER)">{{ 'Serial number' | translate }} <i [inlineSVG]="isIncrease.serialNumber ? '/assets/images/arrow-bottom.svg' : '/assets/images/arrow-top.svg'"></i></th>
+          <th class="text-center w-10"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let asset of searchResult.slice(startItem, endItem)">
+          <td class="text-center w-5">
+            <i [inlineSVG]="'/assets/images/radio.svg'"></i>
+          </td>
+          <td class="text-left w-15 " [innerHTML]="asset.transformerName | highlight: searchKey"></td>
+          <td class="text-left w-10" [innerHTML]="asset.location | highlight: searchKey"></td>
+          <td class="text-left w-15" [innerHTML]="asset.manufacturer | highlight: searchKey"></td>
+          <td class="text-left w-15" [innerHTML]="asset.yearOfManufacture | highlight: searchKey"></td>
+          <td class="text-left w-15" [innerHTML]="asset.maximumPower  | highlight: searchKey"></td>
+          <td class="text-left w-15" [innerHTML]="asset.serialNumber | highlight: searchKey"></td>
+          <td class="text-center w-10">
+            <div (click)="routeToEditAsset(asset)"
+                  class="tes-table__pencil">
+              <i class="fa fa-pencil"></i>
+          </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<tes-paginator [filteredEventsSize]="searchResult.length" [itemsPerPage]="itemsPerPage" [currentPage]="currentPage"
+      [startItem]="startItem" [endItem]="endItem" (paginatorTable)="paginatorTable($event)"></tes-paginator>
+
+<div class="pt-2">
+  <button class="btn btn-primary shadow-none px-5 py-2" routerLink="/overview/transformer-management/add-new">
+    {{ 'Add Asset' | translate }}
+  </button>
+</div>

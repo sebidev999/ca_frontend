@@ -1,0 +1,49 @@
+<div class="p-4">
+  <div class="align-items-center d-flex justify-content-between">
+    <div class="tes-device-modal-header__title">{{ 'Add device' | translate }}</div>
+    <button type="button" class="tes-device-modal__close"
+        aria-label="Close" (click)="bsModalRef.hide()">
+    </button>
+  </div>
+  <form [formGroup]="deviceForm" (ngSubmit)="onSubmit()">
+    <div class="tes-device__body">
+        <div class="row">
+          <div class="form-group col-md-6 col-sm-6 col-xs-12">
+            <label>{{ 'Name' | translate}}</label>
+            <input type="text" class="form-control" tesNoWhiteSpace formControlName="name" required #name/>
+            <div *ngIf="submitted && deviceFormControls.name.errors" class="alert alert-danger">
+              <div *ngIf="deviceFormControls.name.errors.required">{{ 'Name' | translate }} is required</div>
+              <div *ngIf="!deviceFormControls.name.errors.required">Name mustn't have empty space.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="form-group col-md-6 col-sm-6 col-xs-12">
+            <label>{{ 'Device ID' | translate }}</label>
+            <tes-dropdown
+              [optionsList]="deviceIds"
+              [control]="deviceForm.controls['deviceId']"
+              (valueChanged)="onDeviceIdChange($event)"
+              [isNeedSelectOption]="true"
+              >
+            </tes-dropdown>
+            <div *ngIf="submitted && deviceFormControls.deviceId.errors" class="alert alert-danger">
+              <div *ngIf="deviceFormControls.deviceId.errors.required">
+                {{ 'Device ID' | translate }} is required
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+
+    <div class="tes-device__footer pt-4">
+      <div class="d-flex justify-content-end">
+        <div>
+          <button class="btn btn-light shadow-none px-5 py-2 mr-2" type="button" (click)="abort()">{{ 'Abort' | translate }}</button>
+          <button class="btn btn-primary shadow-none px-5 py-2" [disabled]="!hasChanged" >{{ 'Save' | translate }}</button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

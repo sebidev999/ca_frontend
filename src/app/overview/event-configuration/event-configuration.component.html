@@ -1,0 +1,60 @@
+<div class="d-flex justify-content-between text-right py-2 pt-3">
+  <div (click)="redirect()" class="tes-button__route">
+    <span class="fa fa-arrow-left mr-2"></span>
+    {{ 'TO OVERVIEW' | translate }}
+  </div>
+  <div class="tes-button__route" (click)="detailCancelModal.show()">
+    {{ 'CLOSE SETTINGS' | translate }}
+    <i [inlineSVG]="'/assets/images/close.svg'" [forceEvalStyles]="true" class="ml-2"></i>
+  </div>
+</div>
+<h1 class="pt-4 pb-3">{{ 'Event Configuration' | translate }}</h1>
+
+<div class="d-flex pt-4 pb-4" *ngIf="!commonService.isOnEventDetailPage">
+  <div class="mr-5 pb-1 tes-tabs" (click)="switchTab(eventTabs.CATEGORY)" [ngClass]="{'tes-tabs__active': currentTab === eventTabs.CATEGORY }">
+    {{ 'Category' | translate }}
+  </div>
+  <div class="mx-3 tes-tabs" (click)="switchTab(eventTabs.TABLE)" [ngClass]="{'tes-tabs__active': currentTab === eventTabs.TABLE }">
+    {{ 'Table' | translate }}
+  </div>
+</div>
+
+<router-outlet *ngIf="selectedEventId"></router-outlet>
+<ng-container *ngIf="!selectedEventId">
+  <tes-table *ngIf="currentTab === eventTabs.TABLE"></tes-table>
+  <tes-category *ngIf="currentTab === eventTabs.CATEGORY"></tes-category>
+</ng-container>
+
+
+<div bsModal #detailCancelModal="bs-modal" class="tes-warning-modal modal fade" tabindex="-1"
+     role="dialog" aria-labelledby="dialog-sizes-name2">
+  <div class="modal-dialog">
+    <div class="tes-warning-modal-content py-2 px-4">
+
+      <div class="tes-warning__header pt-4">
+        <button type="button" class="tes-warning-modal__header-btn"
+                aria-label="Close" (click)="detailCancelModal.hide()">
+        </button>
+      </div>
+
+      <div class="tes-warning__body py-4 px-3 mb-2">
+        <div class="tes-warning-body__title text-center px-2">
+          {{ 'Do you really want to leave the settings?' | translate }}
+        </div>
+
+        <div class="text-center pt-5 pb-5">
+          <i [inlineSVG]="'/assets/images/sign.svg'" [forceEvalStyles]="true"></i>
+        </div>
+
+        <div class="text-center pb-3">
+          <button class="btn btn-primary shadow-none px-5 py-2" (click)="detailCancelModal.hide()">{{ 'Yes' | translate }}</button>
+        </div>
+
+        <div class="text-center">
+          <button class="btn btn-light shadow-none px-5 py-2" (click)="detailCancelModal.hide()">{{ 'No' | translate }}</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

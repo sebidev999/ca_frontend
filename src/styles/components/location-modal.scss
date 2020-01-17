@@ -1,0 +1,51 @@
+tes-location-modal {
+
+  .tes-location-modal-header__title {
+    color: $blue2;
+    font-size: $font-size-6;
+    font-family: $font-family-sans-semibold;
+  }
+
+  .tes-location-modal__close {
+    @extend .icon, .cancel-blue;
+    background-color: transparent;
+    border: 0;
+
+    &:focus {
+      outline: none;
+    }
+
+    &:hover {
+      opacity: 0.5;
+    }
+  }
+
+  .tes-location-modal__input {
+    display: inline-block;
+    position: relative;
+
+    top: 60px;
+    z-index: 999;
+    left: 20px;
+
+    &:before {
+      content: '';
+      @extend .icon, .arrow;
+      position: absolute;
+      left: 14px;
+      top: 12px
+    }
+
+    input {
+      height: 40px;
+      padding-left: 40px;
+      color: $gray1;
+      font-size: $font-size-2;
+      font-family: $font-family-sans-semibold;
+
+      border: none;
+      outline: none;
+      box-shadow: 1px 1px 4px $gray3;
+    }
+  }
+}

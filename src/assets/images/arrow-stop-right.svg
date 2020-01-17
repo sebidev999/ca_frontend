@@ -1,0 +1,11 @@
+<svg class="arrow-stop-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 25">
+    <defs>
+        <style>
+            .arrow-stop-right {
+                fill: #4b4b4b;
+            }
+        </style>
+    </defs>
+    <path class="arrow-stop-right" d="M4.11,0,1.2,2.91l9.58,9.58L1.2,22.07,4.11,25,16.62,12.49Z" />
+    <rect class="arrow-stop-right" x="19.65" width="4.15" height="25" />
+</svg>

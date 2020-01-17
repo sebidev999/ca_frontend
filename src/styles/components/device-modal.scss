@@ -1,0 +1,21 @@
+tes-device-modal {
+  .tes-device-modal-header__title {
+    color: $blue2;
+    font-size: $font-size-6;
+    font-family: $font-family-sans-semibold;
+  }
+
+  .tes-device-modal__close {
+    @extend .icon, .cancel-blue;
+    background-color: transparent;
+    border: 0;
+
+    &:focus {
+      outline: none;
+    }
+
+    &:hover {
+      opacity: 0.5;
+    }
+  }
+}

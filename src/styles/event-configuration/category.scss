@@ -1,0 +1,38 @@
+.tes-event-configuration-tab-category__title {
+  color: $blue2;
+  font-size: $font-size-5;
+  font-family: $font-family-sans-semibold;
+}
+
+.tes-event-configuration-tab-category__description {
+  color: $blue2;
+  font-size: $font-size-2;
+}
+
+.tes-event-configuration-tab-category-form__img {
+  cursor: pointer;
+  opacity: 0.4;
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.tes-event-configuration-tab-category-status__title {
+  color: $gray1;
+  font-size: $font-size-4;
+  font-family: $font-family-sans-semibold;
+  text-transform: uppercase;
+}
+
+.tes-event-configuration-tab-category-checkbox__label {
+  color: $gray2;
+  font-size: $font-size-2;
+  font-family: $font-family-sans-regular;
+}
+
+.tes-event-configuration-tab-category-status__img {
+
+}
+
+

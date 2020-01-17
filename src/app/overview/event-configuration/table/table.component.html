@@ -1,0 +1,100 @@
+<div class="tes-event-configuration-tab-table__checkboxes">
+  <div class="custom-control custom-checkbox">
+    <input type="checkbox" class="custom-control-input" id="customCheck0" [(ngModel)]="isShowAll" (ngModelChange)="showAllEvents()">
+    <label class="custom-control-label d-flex" for="customCheck0">
+      <span class="pr-2">Show all</span>
+    </label>
+  </div>
+
+  <div class="custom-control custom-checkbox">
+    <input type="checkbox" class="custom-control-input" id="customCheck1" [(ngModel)]="tableFilters.nonReport" (ngModelChange)="filterEvents()">
+    <label class="custom-control-label d-flex" for="customCheck1">
+      <span class="pr-2">
+        {{ unReportedItems }}
+      </span>
+      <i class="mr-1" [inlineSVG]="'/assets/images/invisible-icon.svg'" [forceEvalStyles]="true"></i>
+    </label>
+  </div>
+
+  <div class="custom-control custom-checkbox">
+    <input type="checkbox" class="custom-control-input" id="customCheck2" [(ngModel)]="tableFilters.red" (ngModelChange)="filterEvents()">
+    <label class="custom-control-label d-flex" for="customCheck2">
+      <span class="pr-2">
+        {{ categoryCounter(categoriesType.RED) }}
+      </span>
+      <i class="mr-1 d-flex" [inlineSVG]="'/assets/images/category/red.svg'" [forceEvalStyles]="true"></i>
+    </label>
+  </div>
+
+  <div class="custom-control custom-checkbox">
+    <input type="checkbox" class="custom-control-input" id="customCheck3" [(ngModel)]="tableFilters.yellow" (ngModelChange)="filterEvents()">
+    <label class="custom-control-label d-flex" for="customCheck3">
+      <span class="pr-2">
+        {{ categoryCounter(categoriesType.YELLOW) }}
+      </span>
+      <i class="mr-1 d-flex" [inlineSVG]="'/assets/images/category/yellow.svg'" [forceEvalStyles]="true"></i>
+    </label>
+  </div>
+
+  <div class="custom-control custom-checkbox">
+    <input type="checkbox" class="custom-control-input" id="customCheck4" [(ngModel)]="tableFilters.grey" (ngModelChange)="filterEvents()">
+    <label class="custom-control-label d-flex" for="customCheck4">
+      <span class="pr-2">
+        {{ categoryCounter(categoriesType.GREY) }}
+      </span>
+      <i class="mr-1 d-flex" [inlineSVG]="'/assets/images/category/grey.svg'" [forceEvalStyles]="true"></i>
+    </label>
+  </div>
+
+</div>
+
+<div class="tes-table pb-3">
+  <div class="tes-search-container" *ngIf="isShowFilter">
+    <input type="text" placeholder="Search..." focus="true" [(ngModel)]="searchKey" (ngModelChange)="searchByKeyword($event)" #filter>
+    <button [inlineSVG]="'/assets/images/cross-blue.svg'" [forceEvalStyles]="true" (click)="searchByKeyword('')"></button>
+  </div>
+
+  <div class="table-responsive tes-table-section">
+    <table class="table table-borderless">
+      <thead>
+        <tr>
+          <th class="text-center w-5" (click)="showHideFilter()"><i [inlineSVG]="'/assets/images/sort.svg'"></i></th>
+          <th class="text-center w-10 category" (click)="sortByCategory()">{{ 'Category' | translate }} <i [inlineSVG]="isIncrease.category ? '/assets/images/arrow-bottom.svg' : '/assets/images/arrow-top.svg'"></i></th>
+          <th class="text-left w-25 event-name" (click)="sortByEventName()">{{ 'Event name' | translate }} <i [inlineSVG]="isIncrease.eventName ? '/assets/images/arrow-bottom.svg' : '/assets/images/arrow-top.svg'"></i></th>
+          <th class="text-left w-15 device" (click)="sortTableByFieldName(eventTableFields.DEVICE)">{{ 'Device' | translate }} <i [inlineSVG]="isIncrease.device ? '/assets/images/arrow-bottom.svg' : '/assets/images/arrow-top.svg'"></i></th>
+          <th class="text-left w-15 asset" (click)="sortTableByFieldName(eventTableFields.ASSET)">{{ 'Asset' | translate }} <i [inlineSVG]="isIncrease.asset ? '/assets/images/arrow-bottom.svg' : '/assets/images/arrow-top.svg'"></i></th>
+          <th class="text-left w-10 location" (click)="sortTableByFieldName(eventTableFields.LOCATION)">{{ 'Location' | translate }} <i [inlineSVG]="isIncrease.location ? '/assets/images/arrow-bottom.svg' : '/assets/images/arrow-top.svg'"></i></th>
+          <th class="text-center w-10 report" (click)="sortTableByFieldName(eventTableFields.REPORT)">{{ 'Report' | translate }} <i [inlineSVG]="isIncrease.report ? '/assets/images/arrow-bottom.svg' : '/assets/images/arrow-top.svg'"></i></th>
+          <th class="text-center w-5 edit"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let event of filteredEvents.slice(paginatorItems.startItem, paginatorItems.endItem)">
+          <td class="text-center w-5" [class.non-report]="!event.report"><i [inlineSVG]="'/assets/images/radio.svg'"></i></td>
+          <td class="text-center w-10" [class.non-report]="!event.report"><i [inlineSVG]="'/assets/images/category/'+ event.category + '.svg'"></i></td>
+          <td class="text-left w-25" [innerHTML]="event.eventName | highlight: searchKey" [class.non-report]="!event.report"></td>
+          <td class="text-left w-15" [innerHTML]="event.device | highlight: searchKey" [class.non-report]="!event.report"></td>
+          <td class="text-left w-15" [innerHTML]="event.asset | highlight: searchKey" [class.non-report]="!event.report"></td>
+          <td class="text-left w-10" [innerHTML]="event.location | highlight: searchKey" [class.non-report]="!event.report"></td>
+          <td class="text-center w-5">
+            <i [inlineSVG]="event.report ? '/assets/images/visible-icon.svg' : '/assets/images/invisible-icon.svg'"></i>
+          </td>
+          <td class="text-right w-5 edit">
+            <div class="tes-table__pencil m-auto" (click)="goEventDetail(event)">
+              <i class="fa fa-pencil"></i>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<tes-paginator [filteredEventsSize]="filteredEvents.length" [itemsPerPage]="itemsPerPage" [currentPage]="paginatorItems.currentPage"
+               [startItem]="paginatorItems.startItem" [endItem]="paginatorItems.endItem" (paginatorTable)="paginatorTable($event)"></tes-paginator>
+
+<div class="pt-2 text-right">
+  <button class="py-2 px-5 btn btn-primary shadow-none" (click)="exportAsCSV()">
+    <i class="mr-3" [inlineSVG]="'/assets/images/csv.svg'" [forceEvalStyles]="true"></i>{{ 'Export' | translate }}</button>
+</div>
+<a class="hidden" #export></a>

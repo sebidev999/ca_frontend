@@ -1,0 +1,10 @@
+<svg class="arrow-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 25">
+    <defs>
+        <style>
+            .arrow-left {
+                fill: #4b4b4b;
+            }
+        </style>
+    </defs>
+    <path class="arrow-left" d="M17.3,0l2.91,2.91-9.58,9.58,9.58,9.58L17.3,25,4.79,12.49Z" />
+</svg>

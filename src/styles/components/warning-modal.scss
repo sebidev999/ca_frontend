@@ -1,0 +1,45 @@
+.tes-warning-modal {
+
+
+  .modal-dialog {
+    max-width: 380px !important;
+    margin: 1.75rem auto;
+  }
+  
+  .tes-warning-modal-content {
+    pointer-events: auto;
+    background-color: $white;
+  }
+
+  .tes-warning__header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-end;
+  }
+
+  .tes-warning-modal__header-btn {
+    @extend .icon, .cancel-blue;
+    background-color: transparent;
+    border: 0;
+
+    &:focus {
+      outline: none;
+    }
+
+    &:hover {
+      opacity: 0.5;
+    }
+  }
+
+  .tes-warning-body__title {
+    color: $gray1;
+    font-size: $font-size-6;
+    font-family: $font-family-sans-regular;
+  }
+
+  .tes-warning-body__description {
+    color: $gray2;
+    font-size: $font-size-2;
+    font-family: $font-family-sans-regular;
+  }
+}

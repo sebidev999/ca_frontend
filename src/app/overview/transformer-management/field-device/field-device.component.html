@@ -1,0 +1,198 @@
+<div>
+
+    <div class="card">
+
+        <div class="card-body p-4">
+
+            <h2 class="mb-3">{{ 'Add and manage field devices' | translate }}</h2>
+
+            <div class="tes-table pb-3">
+                <div class="tes-border__bottom">
+                    <div class="tes-table-header">
+                        <div class="tes-table-container">
+                            <div class="text-left w-25">{{ 'Name of the field device' | translate}}</div>
+                            <div class="text-left w-50">{{ 'ID Identifier' | translate }}</div>
+                            <div class="text-right w-25"></div>
+                        </div>
+                    </div>
+                    <div class="tes-table-body">
+                        <div class="tes-table-container tes-table-body__row" *ngFor="let device of devices">
+                            <div class="text-left w-25">{{ device.name }}</div>
+                            <div class="text-left w-50">{{ device.deviceId }}</div>
+                            <div class="text-right w-25">
+                              <i class="mx-4 cursor-pointer" [inlineSVG]="'/assets/images/configurator.svg'" [forceEvalStyles]="true" (click)="editDevice(device)"></i>
+                              <i class="mx-4 cursor-pointer" [inlineSVG]="'/assets/images/dustbin.svg'" [forceEvalStyles]="true" (click)="deleteDevice(device)"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tes-field-device__btn-add pt-3" (click)="openDeviceModal()">
+              <span class="fa fa-plus pr-3"></span>
+              {{ 'Field Device' | translate }}
+            </div>
+
+        </div>
+
+    </div>
+    <form [formGroup]="fieldDeviceForm">
+        
+        <div class="card">
+
+            <div class="card-body p-4">
+
+                <div class="tes-field-device-row__border pb-5 pt-2">
+                    <h2 class="mb-3">{{ 'Analysis Function' | translate }}</h2>
+                    <div class="row">
+                        <div class="col-xl-9 col-md-12 col-sm-12 col-xs-12 tes-field-device-gas-analysis__img tes-field-device-background-img">
+
+                        </div>
+                        <div class="col-xl-3 col-md-3 col-sm-3 col-xs-3">
+                            <h2 class="mb-3">{{ 'Dissolved Gas Analysis' | translate }}</h2>
+                            <div class="form-group">
+                                <label class="mb-1">{{ 'Field Device' | translate }}</label>
+                                <tes-dropdown [control]="fieldDeviceForm.controls['dissolved']"
+                                    [optionsList]="selectOptions"
+                                    (valueChanged)="onValueChanged('dissolved', $event)">
+                                </tes-dropdown>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row tes-field-device-row__border py-5">
+                    <div class="col-xl-9 col-md-12 col-sm-12 col-xs-12 tes-field-device-step__image tes-field-device-background-img">
+
+                    </div>
+                    <div class="col-xl-3 col-md-12 col-sm-12 col-xs-12">
+                        <h2 class="mb-3">{{ 'Step switch monitoring' | translate }}</h2>
+                        <div class="form-group">
+                            <label class="mb-1">{{ 'Field Device' | translate }}</label>
+                            <tes-dropdown [control]="fieldDeviceForm.controls['stepMonitoring']"
+                                [optionsList]="selectOptions"
+                                (valueChanged)="onValueChanged('stepMonitoring', $event)">
+                            </tes-dropdown>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row tes-field-device-row__border py-5">
+                    <div class="col-md-9 col-sm-9 col-xs-12 tes-field-device-cooling__image tes-field-device-background-img">
+
+                    </div>
+                    <div class="col-md-3 col-sm-3 col-xs-12">
+                        <h2 class="mb-3">{{ 'Cooling Systems' | translate }}</h2>
+                        <div class="form-group">
+                            <label class="mb-1">{{ 'Field Device' | translate }}</label>
+                            <tes-dropdown [control]="fieldDeviceForm.controls['coolingSystem1']"
+                                [optionsList]="selectOptions"
+                                (valueChanged)="onValueChanged('coolingSystem1', $event)">
+                            </tes-dropdown>
+                        </div>
+                        <div class="form-group">
+                            <label class="mb-1">{{ 'Cooling Stages' | translate }}</label>
+                            <tes-dropdown [control]="fieldDeviceForm.controls['coolingSystem2']"
+                                [optionsList]="selectOptions"
+                                (valueChanged)="onValueChanged('coolingSystem2', $event)">
+                            </tes-dropdown>
+                        </div>
+                        <div class="form-group">
+                            <label class="mb-1">{{ 'Typ' | translate }}</label>
+                            <tes-dropdown [control]="fieldDeviceForm.controls['coolingSystem3']"
+                                [optionsList]="selectOptions"
+                                (valueChanged)="onValueChanged('coolingSystem3', $event)">
+                            </tes-dropdown>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row py-5">
+                    <div class="col-md-9 col-sm-9 col-xs-12 tes-field-device-bushing__image tes-field-device-background-img">
+
+                    </div>
+                    <div class="col-md-3 col-sm-3 col-xs-12">
+                        <h2 class="mb-3">{{ 'Bushings' | translate }}</h2>
+                        <div class="form-group">
+                            <label class="mb-1">{{ 'Field Device' | translate }}</label>
+                            <tes-dropdown [control]="fieldDeviceForm.controls['bushing1']"
+                                [optionsList]="selectOptions"
+                                (valueChanged)="onValueChanged('bushing1', $event)">
+                            </tes-dropdown>
+                        </div>
+                        <div class="form-group">
+                            <label class="mb-1">{{ 'Fields' | translate }}</label>
+                            <tes-dropdown [control]="fieldDeviceForm.controls['bushing2']"
+                                [optionsList]="selectOptions"
+                                (valueChanged)="onValueChanged('bushing2', $event)">
+                            </tes-dropdown>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="card">
+
+            <div class="card-body p-4">
+
+                <div class="tes-field-device-row__border pb-5 pt-2">
+                    <h2 class="mb-3">{{ 'Screens' | translate }}</h2>
+                    <div class="row">
+                        <div class="col-md-9 col-sm-9 col-xs-12 tes-field-device-asset-card__image">
+                        </div>
+                        <div class="col-md-3 col-sm-3 col-xs-12">
+                            <h2 class="mb-3">{{ 'Asset-Card' | translate }}</h2>
+                            <div class="form-group">
+                                <label class="mb-1">{{ 'Line' | translate }} 1</label>
+                                <tes-dropdown [control]="fieldDeviceForm.controls['assetCard1']"
+                                    [optionsList]="selectOptions"
+                                    (valueChanged)="onValueChanged('assetCard1', $event)">
+                                </tes-dropdown>
+                            </div>
+                            <div class="form-group">
+                                <label class="mb-1">{{ 'Line' | translate }} 2</label>
+                                <tes-dropdown [control]="fieldDeviceForm.controls['assetCard2']"
+                                    [optionsList]="selectOptions"
+                                    (valueChanged)="onValueChanged('assetCard2', $event)">
+                                </tes-dropdown>
+                            </div>
+                            <div class="form-group">
+                                <label class="mb-1">{{ 'Line' | translate }} 3</label>
+                                <tes-dropdown [control]="fieldDeviceForm.controls['assetCard3']"
+                                    [optionsList]="selectOptions"
+                                    (valueChanged)="onValueChanged('assetCard3', $event)">
+                                </tes-dropdown>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="row py-5">
+                    <div class="col-md-9 col-sm-9 col-xs-12 tes-field-device-resources-overview__image tes-field-device-background-img">
+
+                    </div>
+                    <div class="col-md-3 col-sm-3 col-xs-12">
+                        <h2 class="mb-3">{{ 'Resources Overview' | translate }}</h2>
+                        <div class="form-group">
+                            <label class="mb-1">{{ 'Field Device' | translate }}</label>
+                            <tes-dropdown [control]="fieldDeviceForm.controls['resourceOverview']"
+                                [optionsList]="selectOptions"
+                                (valueChanged)="onValueChanged('resourceOverview', $event)">
+                            </tes-dropdown>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pt-4 text-right">
+                    <button type="submit" class="btn btn-primary shadow-none px-5 py-2" [disabled]="!hasChanged">{{ 'Save' | translate }}</button>
+                </div>
+
+            </div>
+        </div>
+
+    </form>
+</div>

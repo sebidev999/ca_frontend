@@ -1,0 +1,26 @@
+/* You can add global styles to this file, and also import other style files */
+@import "styles/theme/styles";
+
+// page overview
+@import "styles/overview/card";
+@import "styles/overview/highlight.scss";
+
+// event-cofiguration
+@import "styles/event-configuration/category";
+@import "styles/event-configuration/select";
+@import "styles/event-configuration/table";
+@import "styles/event-configuration/event-detail";
+@import "styles/event-configuration/toogle";
+
+// transformer-management
+@import "styles/transformer-management/assets";
+@import "styles/transformer-management/tabs";
+@import "styles/transformer-management/add-asset";
+@import "styles/transformer-management/field-device";
+@import "styles/components/location-modal";
+@import "styles/components/device-modal.scss";
+
+// components
+@import "styles/components/dropdown";
+@import "styles/components/specification-modal";
+@import "styles/components/warning-modal";

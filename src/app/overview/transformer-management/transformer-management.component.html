@@ -1,0 +1,10 @@
+<div class="d-flex justify-content-between text-right py-2 pt-3">
+  <div (click)="redirect()" class="tes-button__route">
+    <i class="fa fa-arrow-left mr-2"></i>
+    {{ 'TO OVERVIEW' | translate }}</div>
+  <div class="tes-button__route">{{ 'CLOSE SETTINGS' | translate }}
+    <i [inlineSVG]="'/assets/images/close.svg'" [forceEvalStyles]="true" class="ml-2"></i>
+  </div>
+</div>
+
+<router-outlet></router-outlet>

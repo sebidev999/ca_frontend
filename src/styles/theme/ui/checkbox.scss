@@ -1,0 +1,39 @@
+.custom-control.custom-checkbox{padding-left: 0;}
+
+label.custom-control-label {
+  position: relative;
+  padding-right: 1.5rem;
+  cursor: pointer;
+}
+
+label.custom-control-label::before, label.custom-control-label::after{
+  right: 0;
+  left: auto;
+  top: 0.1em;
+}
+
+.custom-control-label {
+  color: $gray1;
+  font-size: $font-size-2;
+  font-family: $font-family-sans-semibold;
+  padding: 2px 8px 2px 0;
+}
+
+.custom-control-label:before {
+  height: 20px;
+  width: 20px;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+  border: $gray4 solid 1px !important;
+}
+
+.custom-control-label:after {
+  height: 20px;
+  width: 20px;
+  background-size: 60% 60%;
+}
+
+.custom-control-input:checked ~ .custom-control-label:before {
+  background-color: $blue2 !important;
+  border-color: $blue2 !important;
+}

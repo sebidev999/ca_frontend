@@ -1,0 +1,18 @@
+<div class="dropdown tes-dropdown" dropdown>
+
+  <button #dropdown class="form-control dropdown-toggle px-3"  type="button" dropdownToggle id="dropdownMenuButton">
+    <input type="button" [formControl]="control" (click)="dropdown.focus()">
+  </button>
+  <ul class="dropdown-menu" *dropdownMenu aria-labelledby="dropdownMenuButton">
+
+    <li class="dropdown-item" (click)="onOptionSelected('addNewLocation')">
+      <i class="mr-3" [inlineSVG]="'/assets/images/marker.svg'" [forceEvalStyles]="true"></i>
+      {{ 'Add new location' | translate }}
+    </li>
+
+    <li class="dropdown-item" *ngFor="let option of optionsList"
+        (click)="onOptionSelected(option.name)">
+      {{ option.name | translate }}
+    </li>
+  </ul>
+</div>

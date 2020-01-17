@@ -1,0 +1,15 @@
+<div class="pt-2 tes-paginator" *ngIf="filteredEventsSize > itemsPerPage">
+  <a class="action cursor-pointer" [class.disabled]="!currentPage" (click)="goFirstPageOfTable()"
+     [inlineSVG]="'/assets/images/arrow-stop-left.svg'" [forceEvalStyles]="true">
+  </a>
+  <a class="action cursor-pointer" [class.disabled]="!currentPage" (click)="goPrevPageOfTable()"
+     [inlineSVG]="'/assets/images/arrow-left.svg'" [forceEvalStyles]="true">
+  </a>
+  <div class="text">{{ startItem + 1 }}-{{ endItem }} of {{ filteredEventsSize }}</div>
+  <a class="action cursor-pointer" [class.disabled]="currentPage == lastPageOfTable" (click)="goNextPageOfTable()"
+     [inlineSVG]="'/assets/images/arrow-right.svg'" [forceEvalStyles]="true">
+  </a>
+  <a class="action cursor-pointer" [class.disabled]="currentPage == lastPageOfTable" (click)="goLastPageOfTable()"
+     [inlineSVG]="'/assets/images/arrow-stop-right.svg'" [forceEvalStyles]="true">
+  </a>
+</div>

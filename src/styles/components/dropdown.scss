@@ -1,0 +1,70 @@
+.tes-dropdown {
+
+  .dropdown-toggle {
+    align-items: center;
+    background: white;
+    border: 1px solid $gray4;
+    color: $gray1;
+    display: flex;
+    justify-content: space-between;
+    font-size: $font-size-2;
+    font-family: $font-family-sans-semibold;
+    height: 40px;
+    width: 100%;
+
+    input {
+      outline: none;
+      border: none;
+      color: $gray1;
+      background: transparent;
+    }
+
+    &:after {
+      color: $gray3;
+    }
+
+    &:focus {
+      border: 1px solid $blue2;
+      color: $blue2;
+      outline: none;
+      input {
+        outline: none;
+        border: none;
+        color: $blue2;
+        background: transparent;
+      }
+    }
+
+    &:focus::after {
+      color: $blue2;
+    }
+  }
+
+  .dropdown-menu {
+    border-radius: 0;
+    border: none;
+    box-shadow: 0 2px 4px $gray7;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+  }
+
+  .dropdown-item {
+    align-items: center;
+    cursor: default;
+    color: $gray1;
+    display: flex;
+    font-size: $font-size-2;
+    font-family: $font-family-sans-semibold;
+    height: 40px;
+    overflow: hidden;
+
+    &:hover {
+      background-color: $gray8;
+    }
+    &:active {
+      color: $blue2;
+    }
+  }
+
+}

@@ -1,0 +1,21 @@
+.tes-overview-card {
+  cursor: pointer;
+  height: 225px;
+
+  &:focus {
+    border: 1px solid $blue2;
+  }
+}
+
+.tes-overview-card__title {
+  font-size: 18px;
+}
+
+.tes-overview-card__description {
+  color: $gray3;
+  font-size: 14px;
+}
+
+.tes-overview-card__img {
+  min-height: 48px;
+}

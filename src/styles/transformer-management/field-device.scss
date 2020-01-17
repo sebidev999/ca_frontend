@@ -1,0 +1,52 @@
+tes-field-device {
+  .tes-field-device-gas-analysis__img {
+    background-image: url(assets/images/DGA_blue.png);
+  }
+
+  .tes-field-device-step__image {
+    background-image: url(assets/images/DGA_blue-1.png);
+  }
+
+  .tes-field-device-cooling__image {
+    background-image: url(assets/images/DGA_blue-2.png);
+  }
+
+  .tes-field-device-bushing__image {
+    background-image: url(assets/images/DGA_blue-3.png);
+  }
+
+  .tes-field-device-asset-card__image {
+    background-image: url(assets/images/DGA_blue-4.png);
+    height: 240px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+
+  .tes-field-device-resources-overview__image {
+    background-image: url(assets/images/DGA_blue-5.png);
+  }
+
+  .tes-field-device-background-img {
+    height: 450px;
+    background-position: left;
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+
+  .tes-field-device-row__border {
+    border-bottom: 1px solid $gray4;
+  }
+
+  .tes-field-device__btn-add {
+    cursor: pointer;
+    color: $blue2;
+    font-size: $font-size-4;
+    font-family: $font-family-sans-semibold;
+  }
+
+  .card {
+    border-radius: 0;
+  }
+
+}

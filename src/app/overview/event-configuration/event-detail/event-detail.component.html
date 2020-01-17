@@ -1,0 +1,137 @@
+<form [formGroup]="eventDetailForm" (ngSubmit)="onSubmit()">
+  <div class="card">
+    <div class="card-body mx-3 mt-2 mb-3">
+      <h2>
+        {{ 'Detailed View' | translate }}
+      </h2>
+
+      <div class="row pt-3">
+        <div class="col-md-8 col-sm-8 col-xs-8">
+          <div class="row">
+            <div class="col-md-3 border border-top-0 border-bottom-0 border-left-0">
+              <label>{{ 'Component' | translate }}</label>
+              <div class="tes-event-detail__description">{{ eventDetailForm.value.component }}</div>
+            </div>
+            <div class="col-md-3 border border-top-0 border-bottom-0 border-left-0">
+              <label>{{ 'Device name' | translate }}</label>
+              <div class="tes-event-detail__description">{{ eventDetailForm.value.device }}</div>
+            </div>
+            <div class="col-md-3 border border-top-0 border-bottom-0 border-left-0">
+              <label>{{ 'Asset name' | translate }}</label>
+              <div class="tes-event-detail__description">{{ eventDetailForm.value.asset }}</div>
+            </div>
+            <div class="col-md-3">
+              <label class="tes-event-detail__title">{{ 'Location' | translate }}</label>
+              <div class="tes-event-detail__description">{{ eventDetailForm.value.location }}</div>
+            </div>
+          </div>
+
+          <div class="row pt-4">
+            <div class="col-md-3 d-flex">
+              <div class="flex-fill">
+                <label>{{ 'Category' | translate }}</label>
+                <tes-category-list
+                  [control]="eventDetailForm.controls['category']"
+                  (valueChanged)="onCategoryChanged($event)"
+                ></tes-category-list>
+              </div>
+              <div class="flex-fill">
+                <label>{{ 'Report' | translate }}</label>
+                <div>
+                  <button class="tes-event-detail__border btn px-2" type="button"
+                          [inlineSVG]="eventDetailForm.value.report ? '/assets/images/visible-icon.svg' : '/assets/images/invisible-icon.svg'"
+                          [forceEvalStyles]="true"
+                          (click)="updateReportState(eventDetailForm.value.report)">
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-9">
+              <div class="form-group">
+                <label>{{ 'Event name' | translate }}</label>
+                <input type="text" class="form-control" formControlName="eventName" />
+                <div *ngIf="submitted && eventDetailFormControls.eventName.errors" class="alert alert-danger">
+                  <div *ngIf="eventDetailFormControls.eventName.errors.required">{{ 'Event name' | translate }} is required</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row pt-4">
+            <div class="col-md-12">
+              <label>{{ 'Description' | translate }}</label>
+              <textarea class="form-control" rows="4" formControlName="description"></textarea>
+              <div *ngIf="submitted && eventDetailFormControls.description.errors" class="alert alert-danger">
+                <div *ngIf="eventDetailFormControls.description.errors.required">{{ 'Description' | translate }} is required</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row pt-4">
+            <div class="col-md-12">
+              <label>{{ 'Remedy' | translate }}</label>
+              <textarea class="form-control" rows="4" formControlName="remedy"></textarea>
+              <div *ngIf="submitted && eventDetailFormControls.remedy.errors" class="alert alert-danger">
+                <div *ngIf="eventDetailFormControls.remedy.errors.required">{{ 'Remedy' | translate }} is required</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4 col-sm-4 col-xs-4">
+          <div class="p-3 tes-event-detail__specification">
+            <i class="tes-event-detail-specification__img" [inlineSVG]="'/assets/images/error.svg'" [forceEvalStyles]="true"></i>
+            <div class="tes-event-detail-specification__title">xxxxxxxxxxxxxxxxxxx</div>
+            <div class="tes-event-detail-specification__description">
+                {{ 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras blandit lacus nec malesuada congue. Donec suscipit pretium laoreet lobortis.' | translate }}
+            </div>
+          </div>
+          <i class="tes-event-detail__img px-2" [inlineSVG]="'/assets/images/transformer.svg'" [forceEvalStyles]="true"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="pt-4 text-right">
+    <button class="py-2 px-5 btn btn-light shadow-none mr-3" (click)="abort()" type="button">{{ 'Abort' | translate }}</button>
+
+    <button type="submit" class="py-2 px-5 btn btn-primary shadow-none" [disabled]="!hasChanged">{{ 'Save' | translate }}</button>
+  </div>
+</form>
+
+<div bsModal #detailCancelModal="bs-modal" class="tes-warning-modal modal fade" tabindex="-1"
+     role="dialog" aria-labelledby="detail-warning-modal">
+  <div class="modal-dialog">
+      <div class="tes-warning-modal-content py-2 px-4">
+
+        <div class="tes-warning__header pt-4">
+          <button type="button" class="tes-warning-modal__header-btn"
+                  aria-label="Close" (click)="detailCancelModal.hide()">
+          </button>
+        </div>
+
+        <div class="tes-warning__body py-4 px-3 mb-2">
+          <div class="tes-warning-body__title text-center px-2">
+            {{ 'Do you really want to leave the settings?' | translate }}
+          </div>
+
+          <div class="tes-warning-body__description text-center px-3 pt-3">
+            {{ 'Upon leaving, your changes are discarded.' | translate }}
+          </div>
+
+          <div class="tes-warning-body__img text-center py-5">
+            <i [inlineSVG]="'/assets/images/warning.svg'" [forceEvalStyles]="true"></i>
+          </div>
+
+          <div class="text-center pb-3">
+            <button class="tes-button__blue px-5 py-2" (click)="detailCancelModal.hide()">{{ 'Yes' | translate }}</button>
+          </div>
+
+          <div class="text-center">
+            <button class="tes-button__white px-5 py-2" (click)="detailCancelModal.hide()">{{ 'No' | translate }}</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+</div>

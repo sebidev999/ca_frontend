@@ -1,0 +1,82 @@
+@mixin styleBtn ($background, $border, $color) {
+  background-color: $background;
+  border: 1px solid $border;
+  color: $color;
+}
+
+.btn {
+  font-size: $font-size-2;
+  font-family: $font-family-sans-semibold;
+  outline: none;
+  border-radius: 0;
+}
+
+.btn-primary {
+
+  @include styleBtn($blue2, $blue2, $white);
+
+  &:not(:disabled):not(.disabled):active {
+    @include styleBtn($blue1, $blue1, $white);
+  }
+
+  &:hover {
+    @include styleBtn($blue1, $blue1, $white);
+  }
+
+  &:focus {
+    @include styleBtn($blue2, $blue2, $white);
+  }
+
+  &:disabled {
+    @include styleBtn($gray4, $gray4, $white);
+  }
+}
+
+.btn-secondary {
+  @include styleBtn($gray5, $gray5, $gray1);
+  text-transform: uppercase;
+
+  &:not(:disabled):not(.disabled):active {
+    @include styleBtn($gray4, $gray4, $gray1);
+  }
+
+  &:hover {
+    @include styleBtn($gray4, $gray4, $gray1);
+  }
+
+  &:focus {
+    @include styleBtn($gray5, $gray5, $gray1);
+  }
+}
+
+.btn-light {
+  @include styleBtn($white, $blue2, $blue2);
+
+  &:not(:disabled):not(.disabled):active {
+    @include styleBtn($blue5, $blue2, $blue2);
+  }
+
+  &:hover {
+    @include styleBtn($blue5, $blue2, $blue2);
+  }
+
+  &:focus {
+    @include styleBtn($white, $blue2, $blue2);
+  }
+}
+
+.tes-button__route {
+  align-items: center;
+  cursor: pointer;
+  color: $blue3;
+  display: inline-flex;
+  font-size: $font-size-1;
+  font-family: $font-family-sans-semibold;
+}
+
+.tes-button__step {
+  cursor: pointer;
+  color: $blue2;
+  font-size: $font-size-4;
+  font-family: $font-family-sans-semibold;
+}

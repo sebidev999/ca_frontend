@@ -1,0 +1,64 @@
+.tes-specification-modal {
+
+  .modal-dialog {
+    max-width: 800px !important;
+    margin: 5rem auto;
+  }
+
+  .tes-specification-modal-content {
+    pointer-events: auto;
+    background-color: $white;
+  }
+
+  .tes-specification-model__header-img {
+    position: absolute;
+    top: -18px;
+    left: -16px;
+  }
+
+  .tes-specification-model__header-btn {
+
+    position: absolute;
+    top: -34px;
+    right: 0;
+    opacity: 0.6;
+    @extend .icon, .cancel-icon;
+    background-color: transparent;
+    border: 0;
+    &:focus {
+      outline: none;
+    }
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  .tes-specification-modal-body__title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: $blue2;
+    font-size: $font-size-5;
+    font-family: $font-family-sans-semibold;
+    border-bottom: 1px solid $blue2;
+  }
+
+  .tes-specification-modal-body__block {
+
+  }
+
+  .tes-specification-modal-body-block__title {
+    flex: 1;
+    color: $gray1;
+    font-size: $font-size-2;
+    font-family: $font-family-sans-semibold;
+    text-transform: uppercase;
+  }
+
+  .tes-specification-modal-body-block__description {
+    flex: 2;
+    color: $gray1;
+    font-size: $font-size-2;
+    font-family: $font-family-sans-regular;
+  }
+}

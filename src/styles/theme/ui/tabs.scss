@@ -1,0 +1,10 @@
+.tes-tabs {
+  cursor: pointer;
+  font-size: $font-size-4;
+  font-family: $font-family-sans-semibold;
+}
+
+.tes-tabs__active {
+  border-bottom: 3px solid $blue2;
+  color: $blue2;
+}

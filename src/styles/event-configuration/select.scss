@@ -1,0 +1,12 @@
+tes-category {
+
+  .form-control {
+    border-radius: 0 !important;
+  }
+
+  .form-control:focus {
+    border-color: $blue3 !important;
+    box-shadow: 0 0 0 0.2px $blue3 !important;
+  }
+
+}

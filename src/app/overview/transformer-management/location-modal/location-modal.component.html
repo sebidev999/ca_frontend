@@ -1,0 +1,29 @@
+<div class="p-4">
+
+  <div class="align-items-center d-flex justify-content-between">
+    <div class="tes-location-modal-header__title">{{ 'Please enter the name and select the location' | translate }}</div>
+    <button type="button" class="tes-location-modal__close"
+            aria-label="Close" (click)="bsModalRef.hide()">
+    </button>
+  </div>
+  <form [formGroup]="locationForm" (ngSubmit)="addNewLocation()">
+    <div class="tes-location__body">
+      <div class="tes-location-modal__input">
+        <input type="text" [placeholder]="'Location name' | translate" formControlName="name">
+      </div>
+      <div id="map" class="leaflet-map" style="height: 400px"></div>
+    </div>
+
+    <div class="tes-location__footer pt-4">
+      <div class="d-flex justify-content-between">
+        <button class="btn btn-secondary shadow-none px-4 py-2" (click)="toMyLocation()">
+          <i class="mr-2" [inlineSVG]="'/assets/images/mylocation.svg'" [forceEvalStyles]="true"></i>
+          {{ 'My location' | translate }}
+        </button>
+        <div>
+          <button class="btn btn-primary shadow-none px-5 py-2" [disabled]="!hasChanged" >{{ 'Save' | translate }}</button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

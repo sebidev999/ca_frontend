@@ -1,0 +1,13 @@
+<h1 class="pt-4 pb-3">{{'Transformer' | translate}} {{ commonService.transformerName }}</h1>
+
+<div class="d-flex pt-4 pb-4">
+  <div class="mr-5 pb-1 tes-tabs" (click)="switchTab(tabs.GENERAL)" [ngClass]="{'tes-tabs__active': currentTab === tabs.GENERAL }">
+    {{ 'General' | translate }}
+  </div>
+  <div class="mx-3 tes-tabs" (click)="switchTab(tabs.FIELD_DEVICE)" [ngClass]="{'tes-tabs__active': currentTab === tabs.FIELD_DEVICE }">
+    {{ 'Field Device' | translate }}
+  </div>
+</div>
+
+<tes-general *ngIf="currentTab === tabs.GENERAL"></tes-general>
+<tes-field-device *ngIf="currentTab === tabs.FIELD_DEVICE"></tes-field-device>

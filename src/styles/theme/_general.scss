@@ -1,0 +1,83 @@
+@import "../../../node_modules/bootstrap/scss/bootstrap";
+
+/* Set the page background*/
+body {
+  background: $background;
+  font-family: $font-family-sans-regular;
+  color: $gray1;
+}
+
+.flex-even {
+  flex: 1;
+}
+
+.form-group {
+  position: relative;
+}
+
+.form-control {
+  color: $gray1;
+  font-size: $font-size-2;
+  font-family: $font-family-sans-semibold;
+
+  min-height: 40px;
+  border: $gray4 solid 1px;
+  border-radius: 0;
+  box-shadow: none;
+
+  &:focus {
+    color: $blue2;
+    background-color: #FFFFFF;
+    border: $blue2 solid 1px;;
+    box-shadow: none;
+    outline: 0;
+  }
+}
+
+input {
+  outline: none;
+}
+
+label {
+  color: $blue2;
+  font-size: $font-size-3;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: $font-family-sans-semibold;
+  line-height: 1.2;
+}
+
+$font-size-list: (
+        h1   $font-size-7,
+        h2   $font-size-5,
+        h3   $font-size-4,
+        h4   $font-size-2,
+);
+
+@each $value in $font-size-list {
+  #{nth($value, 1)} {
+    font-size: nth($value, 2);
+  }
+}
+
+$width-list: (
+        '.w-5'  5%,
+        '.w-10' 10%,
+        '.w-15' 15%,
+        '.w-20' 20%,
+        '.w-30' 30%,
+);
+
+@each $value in $width-list {
+  #{nth($value, 1)} {
+    width: nth($value, 2) !important;
+  }
+}

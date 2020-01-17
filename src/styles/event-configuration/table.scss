@@ -1,0 +1,83 @@
+tes-table {
+
+  .tes-event-configuration-tab-table__checkboxes {
+    display: inline-flex;
+    float: right;
+    position: relative;
+    bottom: 3em;
+    height: 0;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+
+    @media (max-width: $lg) {
+      bottom: unset;
+      float: left;
+
+      .custom-checkbox {
+        margin: 0 4.25rem 0 0;
+      }
+    }
+
+    @media (min-width: $lg) {
+      .custom-checkbox {
+        margin: 0 4.25rem 0 0;
+      }
+    }
+
+    @media (max-width: $md) {
+      bottom: unset;
+      float: left;
+
+      .custom-checkbox {
+        margin: 0 2.25rem 0 0;
+      }
+    }
+
+    @media (max-width: $sm) {
+      bottom: unset;
+      float: left;
+
+      .custom-checkbox {
+        margin: 0 1.25rem 0 0;
+      }
+    }
+
+    > div {
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+
+  .tes-table-section {
+    .category {
+      min-width: 110px;
+    }
+
+    .event-name {
+      min-width: 215px;
+    }
+
+    .device, .asset, .location, .report {
+      min-width: 100px;
+    }
+  }
+
+  @media (max-width: $lg) {
+    .tes-table {
+      margin-top: 40px;
+    }
+  }
+
+  @media (max-width: $sm) {
+    .tes-table {
+      margin-top: 52px;
+    }
+  }
+  
+  @media (max-width: $sm) {
+    .export-button {
+      margin-top: 0.5rem !important;
+    }
+  }  
+}

@@ -1,0 +1,17 @@
+<div class="dropdown" dropdown>
+  <button #dropdown id="button-select-status" dropdownToggle type="button" class="tes-event-detail__border btn px-2"
+          aria-controls="dropdown-basic">
+    <i class="tes-event-detail-img" [inlineSVG]="'assets/images/category/'+ control.value + '.svg'" [forceEvalStyles]="true"></i>
+  </button>
+  <ul class="dropdown-menu" *dropdownMenu id="dropdown-basic" ole="menu" aria-labelledby="button-select-status">
+    <li class="dropdown-item px-2" (click)="onOptionSelected(categoriesType.RED)">
+      <i [inlineSVG]="'assets/images/category/red.svg'" [forceEvalStyles]="true"></i>
+    </li>
+    <li class="dropdown-item px-2" (click)="onOptionSelected(categoriesType.YELLOW)">
+      <i [inlineSVG]="'assets/images/category/yellow.svg'" [forceEvalStyles]="true"></i>
+    </li>
+    <li class="dropdown-item px-2" (click)="onOptionSelected(categoriesType.GREY)">
+      <i [inlineSVG]="'assets/images/category/grey.svg'" [forceEvalStyles]="true"></i>
+    </li>
+  </ul>
+</div>

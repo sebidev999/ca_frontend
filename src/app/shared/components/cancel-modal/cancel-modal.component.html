@@ -1,0 +1,29 @@
+<div class="tes-warning-modal p-4">
+  <div class="tes-warning__header">
+    <button type="button" class="tes-warning-modal__header-btn"
+            aria-label="Close" (click)="bsModalRef.hide()">
+    </button>
+  </div>
+
+  <div class="tes-warning__body py-4 px-3 mb-2">
+    <div class="tes-warning-body__title text-center px-2">
+      {{ 'Do you really want to leave the settings?' | translate }}
+    </div>
+
+    <div class="tes-warning-body__description text-center px-3 pt-3">
+      {{ 'Upon leaving, your changes are discarded.' | translate }}
+    </div>
+
+    <div class="tes-warning-body__img text-center py-5">
+      <i [inlineSVG]="'/assets/images/warning.svg'" [forceEvalStyles]="true"></i>
+    </div>
+  </div>
+
+  <div class="text-center pb-3">
+    <button class="btn shadow-none px-5 py-2 yes-cancel" [ngClass]="isAcceptBtnFocused ? 'btn-primary' : 'btn-light'" (click)="closeModal()" #acceptButton>{{ 'Yes' | translate }}</button>
+  </div>
+
+  <div class="text-center">
+    <button class="btn shadow-none px-5 py-2 yes-cancel" [ngClass]="!isAcceptBtnFocused ? 'btn-primary' : 'btn-light'" (click)="bsModalRef.hide()">{{ 'No' | translate }}</button>
+  </div>
+</div>

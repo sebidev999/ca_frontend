@@ -1,0 +1,48 @@
+.tes-transformer-management-step {
+  cursor: pointer;
+  font-family: $font-family-sans-semibold;
+  font-size: $font-size-4;
+}
+
+.tes-transformer-management-step__active {
+
+  .tes-transformer-management-step-text {
+    color: $blue2;
+  }
+
+  .tes-transformer-management-step-circle__outer {
+    border: $blue2 solid 1px;
+
+    .tes-transformer-management-step-circle__inner {
+      background: $blue2;
+    }
+  }
+
+}
+
+.tes-transformer-management-step-text {
+  align-items: center;
+  color: $gray3;
+}
+
+.tes-transformer-management-step-circle__outer {
+  border: none;
+  border-radius: 50%;
+  height: 40px;
+  width: 40px;
+  position: relative;
+
+  .tes-transformer-management-step-circle__inner {
+    align-items: center;
+    justify-content: center;
+    color: $white;
+    position: absolute;
+    background: $gray3;
+    border-radius: 50%;
+    height: 30px;
+    width: 30px;
+    top: 50%;
+    left: 50%;
+    margin: -15px 0px 0px -15px;
+  }
+}

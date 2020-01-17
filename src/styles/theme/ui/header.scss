@@ -1,0 +1,16 @@
+header {
+  border-bottom: 1px solid $gray3;
+  background-color: $gray5;
+
+  a.navbar-brand {
+    color: $gray1;
+    font-family: $font-family-sans-semibold;
+    font-size: $font-size-5;
+  }
+
+  img.navbar-brand {
+    width: 54px;
+    margin-right: 0;
+  }
+
+}
