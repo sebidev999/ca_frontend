@@ -30,7 +30,7 @@
     "font-awesome": "^4.7.0",
     "guid": "0.0.12",
     "leaflet": "^1.5.1",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.21",
     "moment": "^2.24.0",
     "ng-inline-svg": "^9.1.0",
     "ngx-bootstrap": "^5.1.2",
